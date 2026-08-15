@@ -1,0 +1,191 @@
+=========================================================
+JS YADAV TAXI SERVICE
+Website Installation & Hosting Guide
+=========================================================
+
+
+WEBSITE INFORMATION
+-------------------
+
+Business Name
+JS Yadav Taxi Service
+
+Phone
+9312363224
+
+Email
+erdevendramehta@gmail.com
+
+Address
+61, Industrial Area,
+Kirti Nagar,
+Delhi-110015
+
+
+TECHNOLOGY
+----------
+
+HTML5
+CSS3
+JavaScript
+
+No paid framework is required.
+
+No database is required.
+
+No paid hosting is required.
+
+
+FOLDER STRUCTURE
+----------------
+
+JS-Yadav-Taxi-Service
+
+    index.html
+
+    css
+        style.css
+
+    js
+        script.js
+
+    images
+
+    README.txt
+
+
+HOW TO TEST ON YOUR COMPUTER
+-----------------------------
+
+1. Put all files in the correct folders.
+
+2. Double-click
+
+       index.html
+
+3. The website should open in your browser.
+
+4. Test the navigation menu.
+
+5. Test the Call button.
+
+6. Test WhatsApp.
+
+7. Test the booking form.
+
+
+WHATSAPP BOOKING
+----------------
+
+The booking form automatically creates a
+WhatsApp message and sends it to
+
++91 9312363224
+
+
+IMPORTANT
+---------
+
+The website does not require PHP or a server-side
+database for the booking form.
+
+The form works through WhatsApp.
+
+Therefore it can be hosted on free static hosting.
+
+
+FREE HOSTING - GITHUB PAGES
+---------------------------
+
+1. Create a GitHub account.
+
+2. Create a new repository.
+
+Suggested repository name
+
+    js-yadav-taxi-service
+
+
+3. Upload
+
+    index.html
+
+    cssstyle.css
+
+    jsscript.js
+
+    README.txt
+
+
+4. Go to
+
+    Repository
+    -
+    Settings
+    -
+    Pages
+
+
+5. Under Build and deployment, choose
+
+    Source Deploy from a branch
+
+6. Select
+
+    Branch main
+    Folder  (root)
+
+
+7. Click Save.
+
+
+GitHub will generate a free website address such as
+
+httpsYOURUSERNAME.github.iojs-yadav-taxi-service
+
+
+CUSTOM DOMAIN
+-------------
+
+If you later purchase a domain such as
+
+www.js yadav taxi.com
+
+you can connect it to GitHub Pages.
+
+A custom domain is optional.
+
+The GitHub Pages address is free.
+
+
+IMAGES
+------
+
+The current website does not require image files.
+
+The destination cards use CSS backgrounds.
+
+You can later add real photographs to the
+images folder and update the CSS.
+
+
+CONTACT DETAILS
+---------------
+
+Phone
+9312363224
+
+WhatsApp
++91 9312363224
+
+Email
+erdevendramehta@gmail.com
+
+Address
+61, Industrial Area,
+Kirti Nagar,
+Delhi-110015
+
+
+END
+=========================================================
