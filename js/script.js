@@ -107,7 +107,8 @@ if (yearElement) {
 
 
 /* =========================================================
-   SET MINIMUM BOOKING DATE
+   BOOKING DATE
+   ALLOW TODAY + NEXT 15 DAYS ONLY
 ========================================================= */
 
 const dateInput =
@@ -116,28 +117,124 @@ const dateInput =
 
 if (dateInput) {
 
+    /*
+       Format JavaScript Date
+       as YYYY-MM-DD
+    */
+
+    function formatDate(date) {
+
+        const year =
+            date.getFullYear();
+
+
+        const month =
+            String(
+                date.getMonth() + 1
+            ).padStart(2, "0");
+
+
+        const day =
+            String(
+                date.getDate()
+            ).padStart(2, "0");
+
+
+        return `${year}-${month}-${day}`;
+
+    }
+
+
+    /*
+       Get today's date
+    */
+
     const today =
         new Date();
 
 
-    const year =
-        today.getFullYear();
+    /*
+       Remove time so date comparison
+       works correctly.
+    */
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
 
 
-    const month =
-        String(
-            today.getMonth() + 1
-        ).padStart(2, "0");
+    /*
+       Minimum booking date = TODAY
+    */
+
+    const minDate =
+        new Date(today);
 
 
-    const day =
-        String(
-            today.getDate()
-        ).padStart(2, "0");
+    /*
+       Maximum booking date =
+       TODAY + 15 DAYS
+    */
 
+    const maxDate =
+        new Date(today);
+
+
+    maxDate.setDate(
+        maxDate.getDate() + 15
+    );
+
+
+    /*
+       Set calendar minimum
+       and maximum dates.
+    */
 
     dateInput.min =
-        `${year}-${month}-${day}`;
+        formatDate(minDate);
+
+
+    dateInput.max =
+        formatDate(maxDate);
+
+
+    /*
+       Validate date when user
+       changes the calendar.
+    */
+
+    dateInput.addEventListener(
+        "change",
+        function () {
+
+            if (
+                !this.value
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                this.value < this.min ||
+                this.value > this.max
+            ) {
+
+                alert(
+                    "Please select a travel date between today and the next 15 days."
+                );
+
+
+                this.value = "";
+
+            }
+
+        }
+    );
 
 }
 
@@ -159,7 +256,9 @@ if (bookingForm) {
             event.preventDefault();
 
 
-            /* Get values */
+            /* =================================================
+               GET FORM VALUES
+            ================================================= */
 
             const name =
                 document
@@ -208,7 +307,9 @@ if (bookingForm) {
                     .trim();
 
 
-            /* Basic validation */
+            /* =================================================
+               BASIC VALIDATION
+            ================================================= */
 
             if (
                 !name ||
@@ -227,7 +328,61 @@ if (bookingForm) {
             }
 
 
-            /* Format date */
+            /* =================================================
+               TRAVEL DATE VALIDATION
+               TODAY + NEXT 15 DAYS
+            ================================================= */
+
+            const selectedDate =
+                new Date(
+                    date + "T00:00:00"
+                );
+
+
+            const currentDate =
+                new Date();
+
+
+            currentDate.setHours(
+                0,
+                0,
+                0,
+                0
+            );
+
+
+            const maximumDate =
+                new Date(currentDate);
+
+
+            maximumDate.setDate(
+                maximumDate.getDate() + 15
+            );
+
+
+            /*
+               Check if selected date is
+               before today or after
+               the 15-day limit.
+            */
+
+            if (
+                selectedDate < currentDate ||
+                selectedDate > maximumDate
+            ) {
+
+                alert(
+                    "Please select a travel date between today and the next 15 days."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               FORMAT TRAVEL DATE
+            ================================================= */
 
             let formattedDate =
                 date;
@@ -258,9 +413,9 @@ if (bookingForm) {
             }
 
 
-            /*
-               Create WhatsApp message.
-            */
+            /* =================================================
+               CREATE WHATSAPP MESSAGE
+            ================================================= */
 
             let messageText =
 
@@ -293,6 +448,10 @@ if (bookingForm) {
                 "%0A";
 
 
+            /* =================================================
+               ADDITIONAL INFORMATION
+            ================================================= */
+
             if (message) {
 
                 messageText +=
@@ -306,19 +465,26 @@ if (bookingForm) {
             }
 
 
+            /* =================================================
+               FINAL MESSAGE
+            ================================================= */
+
             messageText +=
 
                 "%0APlease provide taxi availability and fare details.";
 
 
-            /*
-               JS Yadav Taxi Service
-               WhatsApp number.
-            */
+            /* =================================================
+               WHATSAPP NUMBER
+            ================================================= */
 
             const whatsappNumber =
                 "919312363224";
 
+
+            /* =================================================
+               CREATE WHATSAPP URL
+            ================================================= */
 
             const whatsappURL =
 
@@ -331,9 +497,9 @@ if (bookingForm) {
                 messageText;
 
 
-            /*
-               Open WhatsApp.
-            */
+            /* =================================================
+               OPEN WHATSAPP
+            ================================================= */
 
             window.open(
                 whatsappURL,
